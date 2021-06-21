@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.9)
+
+project(sljit-playground C CXX)
+
+set(CMAKE_CXX_STANDARD 11)
+
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
+
+find_package(SLJIT REQUIRED)
+include(AddSLJITFlags)
+
+execute_process(COMMAND ${CMAKE_COMMAND} "-E" "create_symlink" "${CMAKE_SOURCE_DIR}" "${CMAKE_BINARY_DIR}/src_dir")
+
+set(MOVE_FILES hello_sljit.cc)
+foreach(f ${MOVE_FILES})
+  execute_process(COMMAND ${CMAKE_COMMAND} "-E" "create_symlink" "${CMAKE_CURRENT_SOURCE_DIR}/${f}" "${CMAKE_CURRENT_BINARY_DIR}/${f}")
+endforeach()
+
+add_executable(hello_sljit hello_sljit.cc)
+add_sljit_flags(hello_sljit)
