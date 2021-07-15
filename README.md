@@ -37,10 +37,10 @@ Note that this is only supported for `x86_64` or `x86_32`.
 You may also want to adjust the filename where the output is written.
 
 Post to the calls
-`c++
+```cpp
 code = sljit_generate_code(C);
 len = sljit_get_generated_code_size(C);
-`
+```
 place the following line of code: `dump_code(code, len);`
 
 In the examples here this is by default turned off. To enable via CMake for a particular executable,
