@@ -18,3 +18,6 @@ endforeach()
 
 add_executable(hello_sljit hello_sljit.cc)
 add_sljit_flags(hello_sljit)
+
+add_executable(func_call func_call.cc)
+add_sljit_flags(func_call)
