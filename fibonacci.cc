@@ -64,29 +64,6 @@ int generate_fibonacci(int n)
   sljit_set_label(L3, sljit_emit_label(C));
   // end of function
   sljit_emit_return(C, SLJIT_MOV, SLJIT_RETURN_REG, 0);
-
-#if 0
-  end = sljit_emit_cmp(C, SLJIT_LESS_EQUAL, SLJIT_S0, 0, SLJIT_IMM, 2);
-
-  // sljit_emit_op2(C, SLJIT_ADD, SLJIT_R0, 0, SLJIT_S0, 0, SLJIT_IMM, 1);
-  // sljit_emit_op1(C, SLJIT_MOV, SLJIT_RETURN_REG, 0, SLJIT_R0, 0);
-  // TODO Marian: implement recursive call here
-  sljit_emit_op2(C, SLJIT_SUB, SLJIT_R0, 0, SLJIT_S0, 0, SLJIT_IMM, 1);
-  jump = sljit_emit_call(C, SLJIT_CALL, SLJIT_RET(SW)|SLJIT_ARG1(SW));
-  sljit_set_label(jump, entry);
-  sljit_emit_op1(C, SLJIT_MOV, SLJIT_R1, 0, SLJIT_RETURN_REG, 0);
-  sljit_emit_op2(C, SLJIT_SUB, SLJIT_R0, 0, SLJIT_S0, 0, SLJIT_IMM, 2);
-  jump = sljit_emit_call(C, SLJIT_CALL, SLJIT_RET(SW)|SLJIT_ARG1(SW));
-  sljit_set_label(jump, entry);
-  sljit_emit_op2(C, SLJIT_ADD, SLJIT_RETURN_REG, 0, SLJIT_RETURN_REG, 0, SLJIT_R1, 0);
-  sljit_emit_return(C, SLJIT_MOV, SLJIT_RETURN_REG, 0);
-
-  // label end:
-  sljit_set_label(end, sljit_emit_label(C));
-  sljit_emit_op1(C, SLJIT_MOV, SLJIT_RETURN_REG, 0, SLJIT_IMM, 1);
-  // end of function
-  sljit_emit_return(C, SLJIT_MOV, SLJIT_RETURN_REG, 0);
-#endif
   // <<<
 
   code = sljit_generate_code(C);
