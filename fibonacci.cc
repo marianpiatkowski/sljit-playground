@@ -54,7 +54,7 @@ int generate_fibonacci(int n)
   sljit_emit_op2(C, SLJIT_SUB, SLJIT_R0, 0, SLJIT_S0, 0, SLJIT_IMM, 1);
   jump = sljit_emit_call(C, SLJIT_CALL, SLJIT_RET(SW)|SLJIT_ARG1(SW));
   sljit_set_label(jump, entry);
-  sljit_emit_op1(C, SLJIT_MOV, SLJIT_S1, 0, SLJIT_R0, 0);
+  sljit_emit_op1(C, SLJIT_MOV, SLJIT_S1, 0, SLJIT_RETURN_REG, 0);
   sljit_emit_op2(C, SLJIT_SUB, SLJIT_R0, 0, SLJIT_S0, 0, SLJIT_IMM, 2);
   jump = sljit_emit_call(C, SLJIT_CALL, SLJIT_RET(SW)|SLJIT_ARG1(SW));
   sljit_set_label(jump, entry);
